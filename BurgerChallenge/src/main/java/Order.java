@@ -1,41 +1,32 @@
-import java.util.Scanner;
-
 public class Order {
 
     private Burger burger;
     private Drink drink;
     private SideItem sideItem;
 
-    private void orderMainMenu() {
+    public static void orderMainMenu() {
         System.out.println("Pick food you'd like to get:");
-        System.out.println("1. Burger\n2. Drink\n3. Side item\n\n0. Exit");
+        System.out.println("1. Burger\n2. Drink\n3. Side item\n\n0. Exit\n");
     }
 
-    public void dishSelection() {
+    public Order() {
+    }
 
+    public Order(Burger burger, Drink drink, SideItem sideItem) {
+        this.burger = burger;
+        this.drink = drink;
+        this.sideItem = sideItem;
+    }
 
-        try (Scanner input = new Scanner(System.in)) {
-            orderMainMenu();
-            if (input.hasNextInt()) {
+    public Burger getBurger() {
+        return burger;
+    }
 
-                switch (input.nextInt()) {
-                    case 0 -> System.out.println("Good bye");
-                    case 1 -> {
+    public void setBurger(Burger burger) {
+        this.burger = burger;
+    }
 
-                    }
-                    case 2 -> System.out.println();
-                }
-            } else {
-                System.out.println("Enter number, pls");
-                input.nextLine();
-                dishSelection();
-            }
-
-        } catch (Exception e) {
-            System.out.println("Mistake");
-            dishSelection();
-        }
-
+    public void addOrder(){
 
     }
 }
