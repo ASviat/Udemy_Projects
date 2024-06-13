@@ -8,6 +8,7 @@ public class Burger extends Order {
     private String extra2;
     private String extra3;
 
+
     public Burger() {
         this("Small burger", 1.0);
     }
@@ -28,39 +29,51 @@ public class Burger extends Order {
         this.extra3 = extra3;
     }
 
-    public Burger selectBurger(int type) {
-        switch (type) {
-            case 1 -> {
-                if (isAddExtras()) {
-                    printExtrasMenu();
-                    try (Scanner input = new Scanner(System.in)) {
-                        if (input.hasNextInt()) {
-                            addExtra(input.nextInt());
-                            return new Burger("Small burger", price + 1.0, extra1, extra2, extra3);
-                        }
-                    }
+    public void printBurgerMenuAndPick(Scanner input) {
+        burgerMenu();
+        selectBurger(input);
+    }
+
+    public void selectBurger(Scanner input) {
+
+        if (input.hasNextInt()) {
+            switch (input.nextInt(4)) {
+                case 1 -> {
+                    System.out.println("Small burger added");
+                    this.type = "Small burger";
+                    this.price = 1.0;
                 }
-                return new Burger("Small burger", 1.0);
-            }
-            case 2 -> {
-                return new Burger("Average burger", 1.5);
-            }
-            case 3 -> {
-                return new Burger("Big burger", 2.0);
+                case 2 -> {
+                    System.out.println("Average burger added");
+                    this.type = "Average burger";
+                    this.price = 1.5;
+                }
+                case 3 -> {
+                    System.out.println("Big burger added");
+                    this.type = "Big burger";
+                    this.price = 2.0;
+                }
+
             }
         }
-        return new Burger();
     }
 
     public static void burgerMenu() {
-        System.out.println("1. Small burger\n2. Average burger\n3. Big burger");
+        System.out.println("1. Small burger | Price: 1.0\n2. Average burger | Price: 1.5\n3. Big burger | Price: 2.0");
     }
 
-    public boolean isAddExtras() {
-        try (Scanner input = new Scanner(System.in)) {
-            System.out.println("Would you like to add extras?");
+    public boolean isAddExtras(Scanner input) {
+        System.out.println("Would you like to add extras?\nType 'y' to agree.");
+        return input.next().equalsIgnoreCase("y");
+    }
 
-            return input.nextLine().equalsIgnoreCase("y");
+    public void printAndPickExtras(Scanner input) {
+        if (isAddExtras(input)) {
+            printExtrasMenu();
+            if (input.hasNextInt()) {
+                int choice = input.nextInt();
+                addExtra(choice);
+            }
         }
     }
 
@@ -68,21 +81,27 @@ public class Burger extends Order {
         if (choice == 1) {
             this.extra1 = "Extra Ketchup";
             price += 0.05;
+            System.out.println("Ketchup added");
         }
         if (choice == 2) {
             this.extra2 = "Extra Cucumber";
             price += 0.10;
+            System.out.println("Cucumber added");
         }
         if (choice == 3) {
             this.extra3 = "Extra Tomato";
             price += 0.15;
+            System.out.println("Tomato added");
+        }
+        if (choice <= 0 || choice > 3) {
+            System.out.println("Mistake. No extra selected");
         }
     }
 
     public void printExtrasMenu() {
         System.out.println("1. Ketchup | price: 0.05");
         System.out.println("2. Cucumber | price: 0.10");
-        System.out.println("1. Tomato | price: 0.15");
+        System.out.println("3. Tomato | price: 0.15");
     }
 
     public String getType() {

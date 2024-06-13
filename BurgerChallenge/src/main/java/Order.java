@@ -4,10 +4,16 @@ public class Order {
     private Drink drink;
     private SideItem sideItem;
 
+//    protected static Scanner input = new Scanner(System.in);
+
+
+
+
     public static void orderMainMenu() {
         System.out.println("Pick food you'd like to get:");
         System.out.println("1. Burger\n2. Drink\n3. Side item\n\n0. Exit\n");
     }
+
 
     public Order() {
     }
@@ -18,6 +24,10 @@ public class Order {
         this.sideItem = sideItem;
     }
 
+    public Order(Burger burger) {
+        this.burger = burger;
+    }
+
     public Burger getBurger() {
         return burger;
     }
@@ -26,7 +36,9 @@ public class Order {
         this.burger = burger;
     }
 
-    public void addOrder(){
+    public void newOrder() {
 
     }
+
+
 }
