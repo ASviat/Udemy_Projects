@@ -44,9 +44,6 @@ public class Drink {
         System.out.println("3. Sprite | price: 0.25");
     }
 
-    public Drink() {
-    }
-
     public double getPrice() {
         return price;
     }

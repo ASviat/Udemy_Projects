@@ -8,10 +8,6 @@ public class Burger {
     private String extra2;
     private String extra3;
 
-
-    public Burger() {
-    }
-
     public void printBurgerMenuAndPick(Scanner input) {
         printBurgerMenu();
         addBurger(input);

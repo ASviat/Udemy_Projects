@@ -44,11 +44,6 @@ public class SideItem {
         System.out.println("3. Onion rings | price: 0.85");
     }
 
-    public SideItem() {
-        this.sideItemName = "none";
-        this.price = 0.0;
-    }
-
     public double getPrice() {
         return price;
     }

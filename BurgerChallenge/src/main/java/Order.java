@@ -8,9 +8,6 @@ public class Order {
     private double totalPrice;
     public static int counter;
 
-    public Order() {
-    }
-
     public void newOrder(Scanner input) {
         burger = new Burger();
         burger.printBurgerMenuAndPick(input);
