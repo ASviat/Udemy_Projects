@@ -39,7 +39,7 @@ public class Burger {
         System.out.println("1. Small burger | Price: 1.0\n2. Average burger | Price: 1.5\n3. Big burger | Price: 2.0");
     }
 
-    public boolean isAddExtras(Scanner input) {
+    private boolean isAddExtras(Scanner input) {
         System.out.println("Would you like to add extras?\nType 'y' to agree.");
         return input.next().equalsIgnoreCase("y");
     }
@@ -54,7 +54,7 @@ public class Burger {
         }
     }
 
-    public void addExtra(int choice) {
+    private void addExtra(int choice) {
         if (choice == 1) {
             this.extra1 = "Extra Ketchup";
             price += 0.05;
@@ -75,7 +75,7 @@ public class Burger {
         }
     }
 
-    public void printExtrasMenu() {
+    private void printExtrasMenu() {
         System.out.println("1. Ketchup | price: 0.05");
         System.out.println("2. Cucumber | price: 0.10");
         System.out.println("3. Tomato | price: 0.15");

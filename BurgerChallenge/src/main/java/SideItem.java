@@ -15,12 +15,12 @@ public class SideItem {
         }
     }
 
-    public boolean isAddSideItem(Scanner input) {
+    private boolean isAddSideItem(Scanner input) {
         System.out.println("Would you like to add Side Item?\nType 'y' to agree.");
         return input.next().equalsIgnoreCase("y");
     }
 
-    public void addSideItem(int choice) {
+    private void addSideItem(int choice) {
         if (choice == 1) {
             this.sideItemName = "Fries";
             price += 0.45;
@@ -38,7 +38,7 @@ public class SideItem {
         }
     }
 
-    public void printSideItemsMenu() {
+    private void printSideItemsMenu() {
         System.out.println("1. Fries | price: 0.45");
         System.out.println("2. Shrimps | price: 1.20");
         System.out.println("3. Onion rings | price: 0.85");

@@ -15,12 +15,12 @@ public class Drink {
         }
     }
 
-    public boolean isAddDrink(Scanner input) {
+    private boolean isAddDrink(Scanner input) {
         System.out.println("Would you like to add Drink?\nType 'y' to agree.");
         return input.next().equalsIgnoreCase("y");
     }
 
-    public void addDrink(int choice) {
+    private void addDrink(int choice) {
         if (choice == 1) {
             this.drinkName = "Cola";
             price += 0.35;
@@ -38,7 +38,7 @@ public class Drink {
         }
     }
 
-    public void printDrinksMenu() {
+    private void printDrinksMenu() {
         System.out.println("1. Cola | price: 0.35");
         System.out.println("2. Fanta | price: 0.30");
         System.out.println("3. Sprite | price: 0.25");
