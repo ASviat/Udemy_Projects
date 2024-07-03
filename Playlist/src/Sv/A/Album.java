@@ -24,7 +24,6 @@ public class Album {
 
     public boolean addSong(String songTitle, double durationOfSong) {
         if (findSong(songTitle) == null) {
-
             songs.add(new Song(songTitle, durationOfSong));
             return true;
         } else {
@@ -43,7 +42,6 @@ public class Album {
 
     public boolean addToPlayList(int trackNumber, LinkedList<Song> playlist) {
         try {
-
             playlist.add(songs.get(trackNumber - 1));
             return true;
         } catch (IndexOutOfBoundsException e) {
