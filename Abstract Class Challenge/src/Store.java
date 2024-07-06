@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-record OrderItem (int quantity, ProductForSale selectedProduct) {
+record OrderItem(int quantity, ProductForSale selectedProduct) {
     public OrderItem(ProductForSale selectedProduct) {
         this(1, selectedProduct);
     }
 
-    public void printOrder(){
+    public void printOrder() {
         selectedProduct.printOrderedProduct(quantity);
     }
 }
@@ -62,10 +62,13 @@ class Store {
     }
 
     public static void printOrders() {
+        double salesTotal = 0;
         int counter = 1;
         for (var i : orders) {
+            salesTotal += i.selectedProduct().getPrice(i.quantity());
             System.out.println("|Order №" + counter++);
             i.printOrder();
         }
+        System.out.printf("Total price: %8.2f$", salesTotal);
     }
 }
