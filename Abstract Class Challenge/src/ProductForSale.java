@@ -14,9 +14,9 @@ abstract class ProductForSale {
     }
 
     public void printOrderedProduct(int quantity) {
-        System.out.println("|Product: \"" + type + "\" \n|Quantity: " + quantity);
-        System.out.printf("|$%.2f%n", getPrice(quantity));
-        System.out.println("_".repeat(50));
+        System.out.printf("|Product:%11s\n|Quantity:%10s", type, quantity);
+        System.out.printf("\n|Price:" + " %11.2f$\n", getPrice(quantity));
+        System.out.println("_".repeat(20));
     }
 
     protected double getPrice(int quantity) {
