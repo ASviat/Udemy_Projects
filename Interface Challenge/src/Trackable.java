@@ -1,0 +1,3 @@
+interface Trackable {
+    void track();
+}
