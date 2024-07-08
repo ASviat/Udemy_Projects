@@ -6,6 +6,15 @@ public class Main {
         bird.move();
         bird.track();
         bird2.track();
+        bird2.printInfo();
+        Trackable cat = new Cat();
+        cat.printInfo();
+
+        Vehicle.CAR.printInfo();
+        Trackable.printPrivate();
+
+
+
 
     }
 }
