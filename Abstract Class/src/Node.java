@@ -4,36 +4,32 @@ public class Node extends ListItem {
     }
 
     @Override
-    void next() {
-//            -  next(), takes no parameters and returns the ListItem to its right.
-
+    ListItem next() {
+        return rightLink;
     }
 
     @Override
-    void setNext() {
-//            -  setNext(), takes a ListItem and sets it as its rightLink, then it returns rightLink.
-
+    ListItem setNext(ListItem rightLink) {
+        return this.rightLink = rightLink;
     }
 
     @Override
-    void previous() {
-
-//            -  previous(), takes no parameters and returns the ListItem to its left.
+    ListItem previous() {
+        return leftLink;
     }
 
     @Override
-    void setPrevious() {
-
-//            -  setPrevious(), takes a ListItem and sets it as its leftLink, then it returns leftLink.
+    ListItem setPrevious(ListItem leftLink) {
+        return this.leftLink = leftLink;
     }
 
     @Override
-    void compareTo() {
-//            -  compareTo(), takes a ListItem and compares it to the ListItem that called this method. Use value from
-//    ListItem for comparison. If this value is greater than the value that was passed in, then it should return a number greater than zero.
-//    If vice versa, then it should return a number less than zero, and zero if equal.
-
+    int compareTo(ListItem other) {
+        int x = Integer.parseInt(String.valueOf(value));
+        int y = Integer.parseInt(String.valueOf(other.value));
+        if (x == y) {
+            return 0;
+        }
+        return x > y ? 1 : -1;
     }
-
-
 }

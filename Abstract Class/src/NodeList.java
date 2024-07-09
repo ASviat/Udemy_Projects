@@ -1,12 +1,12 @@
 public interface NodeList {
+    ListItem getRoot();
 
-    void getRoot();
+    boolean addItem(ListItem node);
 
-    void addItem();
+    boolean removeItem(ListItem node);
 
-    void removeItem();
-
-    void traverse();
-
-//    (see child class for declaration).
+    void traverse(ListItem root);
 }
+
+
+

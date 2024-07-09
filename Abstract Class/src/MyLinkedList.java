@@ -1,5 +1,4 @@
 public class MyLinkedList implements NodeList {
-
     private ListItem root;
 
     public MyLinkedList(ListItem root) {
@@ -7,30 +6,63 @@ public class MyLinkedList implements NodeList {
     }
 
     @Override
-    public void getRoot() {
-
-//            -  getRoot(), getter for root.
+    public ListItem getRoot() {
+        return root;
     }
 
     @Override
-    public void addItem() {
-//        -  addItem(), takes a ListItem and returns true if it was added successfully or false otherwise.
-//    If the item is already present, it doesn't get added. Use compareTo() to place the item in its proper order.
+    public boolean addItem(ListItem node) {
+        // the list is empty so the item becomes the head of the list
+        if (root == null) {
+            root = node;
+            return true;
+        }
 
+        ListItem current = root;
+        while (true) {
+            // if there is no next item, we insert this item at the end of the list
+            if (current.next() == null) {
+                current.setNext(node);
+                node.setPrevious(current);
+                return true;
+            }
+            // if there is a next item and new item is smaller, insert this item before current
+            if (current.compareTo(node) == 1) {
+                root = node;
+                root.setNext(current);
+                current.setPrevious(root);
+                return true;
+            }
+            return false;
+        }
     }
 
     @Override
-    public void removeItem() {
-//            -  removeItem(), takes a ListItem and returns true if it was removed successfully or false otherwise.
+    public boolean removeItem(ListItem node) {
+        if (root == null || node == null) {
+            return false;
+        }
+        while (true) {
+            if (node.compareTo(root) == 0) {
+                root.previous().setNext(null);
+                return true;
+            }
 
+            root = root.next();
+            if (root == null) {
+                return false;
+            }
+        }
     }
 
     @Override
-    public void traverse() {
-//        -  traverse(), takes the root as an argument and does not return anything. If the root is null it prints out:
-//    The list is empty, otherwise print each value on a separate line.
-
+    public void traverse(ListItem root) {
+        if (root == null) {
+            System.out.print("The list is empty");
+        }
+        while (root != null) {
+            System.out.println(root.getValue());
+            root = root.next();
+        }
     }
-
-
 }

@@ -1,5 +1,4 @@
 public abstract class ListItem {
-
     protected ListItem rightLink;
     protected ListItem leftLink;
     protected Object value;
@@ -8,15 +7,15 @@ public abstract class ListItem {
         this.value = value;
     }
 
-    abstract void next();
+    abstract ListItem next();
 
-    abstract void setNext();
+    abstract ListItem setNext(ListItem rightLink);
 
-    abstract void previous();
+    abstract ListItem previous();
 
-    abstract void setPrevious();
+    abstract ListItem setPrevious(ListItem leftLink);
 
-    abstract void compareTo();
+    abstract int compareTo(ListItem other);
 
     public Object getValue() {
         return value;
@@ -25,6 +24,4 @@ public abstract class ListItem {
     public void setValue(Object value) {
         this.value = value;
     }
-
-
 }
