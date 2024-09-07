@@ -11,13 +11,16 @@ abstract class Line implements Mappable {
 
     protected String locations() {
         StringBuilder sb = new StringBuilder();
+        sb.append("[");
         for (var i : locations) {
             sb.append(Arrays.toString(i));
             sb.append(",");
         }
-        String output = sb.toString();
-        int stringLength = output.length();
-        return output.substring(0, stringLength - 1);
+
+        int stringLength = sb.length();
+        sb.deleteCharAt(stringLength - 1);
+        sb.append("]");
+        return sb.toString();
     }
 
     public String getType() {

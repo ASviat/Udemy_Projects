@@ -9,6 +9,6 @@ public class Park extends Point {
 
     @Override
     public void render() {
-        System.out.println(name + " " + super.getType() + " as " + super.mapFigure + super.location());
+        System.out.println(name + " " + super.getType() + " as " + super.mapFigure + " (" + super.location() + ")");
     }
 }

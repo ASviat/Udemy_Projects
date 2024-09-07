@@ -9,7 +9,7 @@ abstract class Point implements Mappable {
         this.location = location;
     }
 
-    protected String location(){
+    protected String location() {
         return Arrays.toString(location);
     }
 

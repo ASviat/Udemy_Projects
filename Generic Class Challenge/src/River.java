@@ -9,6 +9,6 @@ public class River extends Line {
 
     @Override
     public void render() {
-        System.out.println(name + " " + super.getType() + " as " + super.mapFigure + super.locations());
+        System.out.println(name + " " + super.getType() + " as " + super.mapFigure + " (" + super.locations() + ")");
     }
 }
