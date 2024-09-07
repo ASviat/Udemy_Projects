@@ -9,20 +9,6 @@ abstract class Line implements Mappable {
         this.locations = locations;
     }
 
-//    protected String locations() {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append("[");
-//        for (var i : locations) {
-//            sb.append(Arrays.toString(i));
-//            sb.append(",");
-//        }
-//
-//        int stringLength = sb.length();
-//        sb.deleteCharAt(stringLength - 1);
-//        sb.append("]");
-//        return sb.toString();
-
-
     protected String locations() {
         return Arrays.deepToString(locations);
     }
