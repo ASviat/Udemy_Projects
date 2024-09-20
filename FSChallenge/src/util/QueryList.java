@@ -21,7 +21,7 @@ public class QueryList<T extends ArrayList<Student> & QueryItem> {
         }
         return matches;
     }
-
+//
 //    public List<T> getMatches(String field, String value) {
 //
 //        List<T> matches = new ArrayList<>();

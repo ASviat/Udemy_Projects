@@ -30,8 +30,16 @@ public class Student implements QueryItem, Comparable<Student> {
         return "%-10d %-15s %-15s %d".formatted(id, name, course, yearStarted);
     }
 
+    public String getCourse() {
+        return course;
+    }
+
     public int getYearStarted() {
         return yearStarted;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
