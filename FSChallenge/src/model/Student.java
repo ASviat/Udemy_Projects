@@ -11,15 +11,14 @@ public class Student implements QueryItem, Comparable<Student> {
     private String course;
     private int yearStarted;
 
-    private static int counter = 10;
+    private static int counter = 0;
     protected static Random random = new Random();
 
     private static String[] firstNames = {"Ann", "Bill", "Cathy", "John", "Tim"};
     private static String[] courses = {"C++", "Java", "Python"};
 
     public Student() {
-
-        id = counter--;
+        id = 1000 + (++counter);
         int lastNameIndex = random.nextInt(65, 91);
         name = firstNames[random.nextInt(5)] + " " + (char) lastNameIndex;
         course = courses[random.nextInt(3)];

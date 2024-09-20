@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Comparator;
+
 public class LPAStudent extends Student {
 
     private double percentComplete;
@@ -16,4 +18,7 @@ public class LPAStudent extends Student {
     public double getPercentComplete() {
         return percentComplete;
     }
+
+
 }
+
