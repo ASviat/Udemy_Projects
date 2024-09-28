@@ -5,6 +5,7 @@ public class LPAStudent extends Student {
     private double percentComplete;
 
     public LPAStudent() {
+        super();
         percentComplete = random.nextDouble(0, 100.001);
     }
 

@@ -35,8 +35,9 @@ public class Main {
         lpaStudents.sort(percentageSorter.reversed());
         printMoreLists(lpaStudents);
 
+
         for (var i : lpaStudents) {
-            if(i.matchFieldValue("percentcomplete","50")){
+            if(i.matchFieldValue("percentComplete","50")){
                 System.out.println(i);
             }
         }
