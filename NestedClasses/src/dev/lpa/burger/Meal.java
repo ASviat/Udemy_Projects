@@ -6,14 +6,21 @@ import java.util.List;
 public class Meal {
 
     private double price = 5.0;
+    private double conversionRate;
+
     private Burger burger;
     private Item drink;
     private Item side;
+    private int ordersNumber;
 
-    private double conversionRate;
+    private static int ordersCounter = 0;
 
     public Meal() {
         this(1, "");
+    }
+
+    public Meal(double conversionRate) {
+        this(conversionRate, "");
     }
 
     public Meal(double conversionRate, String toppings) {
@@ -21,6 +28,7 @@ public class Meal {
         burger = new Burger("Big Tasty", toppings);
         drink = new Item("coke", "drink", 1.5);
         side = new Item("fries", "side", 2.0);
+        ordersNumber = ++ordersCounter;
     }
 
     public double getTotal() {
@@ -30,7 +38,7 @@ public class Meal {
 
     @Override
     public String toString() {
-        return "%s%n%s%n%s%n%26s$%.2f".formatted(burger, drink, side,
+        return "Order №%d%n%s%n%s%n%s%n%26s$%.2f%n".formatted(ordersNumber, burger, drink, side,
                 "Total Due: ", getTotal());
     }
 
@@ -71,7 +79,9 @@ public class Meal {
         private String printToppingNames() {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < selectedToppings.size(); i++) {
-                sb.append("     Extra №%d %11s $%-15.2f%n".formatted(i + 1, selectedToppings.get(i).name, selectedToppings.get(i).price));
+                if (selectedToppings.get(i).name != null) {
+                    sb.append("     Extra №%d %11s $%-15.2f%n".formatted(i + 1, selectedToppings.get(i).name, selectedToppings.get(i).price));
+                }
             }
 
             return sb.toString();
@@ -79,7 +89,7 @@ public class Meal {
 
         @Override
         public String toString() {
-            return "%10s                $%.2f%n%15s".formatted(burgerName,price, printToppingNames());
+            return "%10s                $%.2f%n%15s".formatted(burgerName, price, printToppingNames());
         }
     }
 
@@ -89,11 +99,11 @@ public class Meal {
         private String type;
         private double price;
 
-        public Item() {
-        }
+//        public Item(String name, String type) {
+//            this(name, type, type.equals("burger") ? Meal.this.price : 0);
+//        }
 
-        public Item(String name, String type) {
-            this(name, type, type.equals("burger") ? Meal.this.price : 0);
+        public Item() {
         }
 
         public Item(String name, String type, double price) {
