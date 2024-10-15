@@ -2,46 +2,32 @@ package Sv.A;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-
-record Song(String title, double duration) {
-
-    @Override
-    public String toString() {
-        return String.format("\"%s: %.2f\"", title, duration);
-    }
-}
+import java.util.List;
 
 public class Album {
 
     private final String name;
     private final String artist;
-    private final ArrayList<Song> songs = new ArrayList<>();
+    private SongList songs;
+
 
     public Album(String name, String artist) {
         this.name = name;
         this.artist = artist;
+        songs = new SongList();
     }
 
     public boolean addSong(String songTitle, double durationOfSong) {
-        if (findSong(songTitle) == null) {
+        if (songs.findSong(songTitle) == null) {
             songs.add(new Song(songTitle, durationOfSong));
             return true;
-        } else {
-            return false;
         }
-    }
-
-    private Song findSong(String songTitle) {
-        for (int i = 0; i < songs.size(); i++) {
-            if (songs.get(i).title().equalsIgnoreCase(songTitle)) {
-                return songs.get(i);
-            }
-        }
-        return null;
+        return false;
     }
 
     public boolean addToPlayList(int trackNumber, LinkedList<Song> playlist) {
         try {
+
             playlist.add(songs.get(trackNumber - 1));
             return true;
         } catch (IndexOutOfBoundsException e) {
@@ -59,12 +45,39 @@ public class Album {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Album{" +
-                "name='" + name + '\'' +
-                ", artist='" + artist + '\'' +
-                ", songs=" + songs +
-                '}';
+
+    private class SongList {
+
+        private List<Song> songs;
+
+        public SongList() {
+            songs = new ArrayList<>();
+        }
+
+        private boolean add(Song song) {
+            if (!songs.contains(song)) {
+                songs.add(song);
+                return true;
+            }
+            return false;
+        }
+
+        private Song findSong(String songTitle) {
+            for (Song song : songs) {
+                if (song.getTitle().equalsIgnoreCase(songTitle)) {
+                    return song;
+                }
+            }
+            return null;
+        }
+
+        private Song findSong(int trackNumber) {
+            if (songs.get(trackNumber) != null) {
+                return songs.get(trackNumber);
+            }
+            return null;
+        }
+
+
     }
 }
