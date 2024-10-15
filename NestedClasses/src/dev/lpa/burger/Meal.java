@@ -99,10 +99,6 @@ public class Meal {
         private String type;
         private double price;
 
-//        public Item(String name, String type) {
-//            this(name, type, type.equals("burger") ? Meal.this.price : 0);
-//        }
-
         public Item() {
         }
 
